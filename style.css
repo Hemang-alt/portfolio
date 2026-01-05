@@ -1,0 +1,494 @@
+/* ---------------------------------------------------- */
+/* GLOBAL STYLES                                        */
+/* ---------------------------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color: #111;
+    color: #8892b0;
+    overflow-x: hidden;
+}
+
+/* ---------------------------------------------------- */
+/* NAVIGATION                                           */
+/* ---------------------------------------------------- */
+nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%; 
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    color: white;
+    background-color: transparent; 
+    box-shadow: none;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+}
+nav ul li{
+    margin-left: 30px;
+}
+nav ul li a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* ---------------------------------------------------- */
+/* HERO SECTION                                         */
+/* ---------------------------------------------------- */
+header{
+    height: 85vh;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1562907550-096d3bf9b25c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRhcmslMjBjb2RlfGVufDB8fDB8fHww');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #111);
+    pointer-events: none;
+}
+.hero-content{
+    max-width: 600px; 
+    text-align: center;
+    font-family: 'Courier New', monospace; 
+    color: #0f172a;
+    text-shadow: 0px 0px 5px rgba(255,255,255,0.5);
+}
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ---------------------------------------------------- */
+/* SECTION HEADINGS (Hybrid Typography)                 */
+/* ---------------------------------------------------- */
+.numbered-heading, #about h5 {
+    display: flex;
+    align-items: center;
+    color: #d4af37;
+    font-family: 'Segoe UI', 'Roboto', sans-serif; /* Modern Text */
+    font-size: 26px;
+    font-weight: 700; 
+    margin-bottom: 40px;
+    white-space: nowrap;
+}
+
+.numbered-heading::before, #about h5::before {
+    margin-right: 10px;
+    color: #d4af37;
+    font-family: 'Courier New', monospace; /* Code Style Numbers */
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* ---------------------------------------------------- */
+/* ABOUT SECTION                                        */
+/* ---------------------------------------------------- */
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px 10%;
+    width: 100vw;
+}
+#about p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #8892b0;
+}
+#about ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    list-style: none;
+    margin-top: 20px;
+}
+#about ul li {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+#about ul li::before {
+    content: "▹";
+    color: #d4af37;
+    margin-right: 10px;
+}
+.text{
+    width: 50%;
+    padding-right: 50px;
+}
+.box-for-image {
+    width: 300px;
+    height: auto;
+    position: relative;
+    margin-left: 50px;
+}
+.image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    filter: sepia(40%) grayscale(60%) contrast(1.1); 
+    transition: 0.3s ease;
+    z-index: 2;
+    position: relative;
+}
+.box-for-image::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    top: 15px;
+    left: 15px;
+    z-index: 0;
+    transition: 0.3s;
+}
+.image {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    position: relative;
+    z-index: 10;
+    filter: saturate(80%) contrast(100%) brightness(105%);
+    transition: 0.3s;
+}
+.box-for-image:hover .image {
+    filter: none;
+}
+.box-for-image:hover::after {
+    top: 8px;
+    left: 8px;
+}
+
+/* ---------------------------------------------------- */
+/* EXPERIENCE SECTION                                   */
+/* ---------------------------------------------------- */
+#experience {
+    padding: 100px 10%;
+    min-height: 80vh;
+}
+.inner {
+    display: flex;
+    max-width: 900px;
+    gap: 50px;
+    margin-top: 50px;
+}
+.tab-list {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border-left: 2px solid #333; 
+}
+.tab-btn {
+    background: none;
+    border: none;
+    border-left: 2px solid transparent; 
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+    text-align: left;
+    padding: 15px 20px; 
+    cursor: pointer;
+    color: #8892b0;
+    transition: 0.3s;
+    margin-left: -2px; 
+}
+.tab-btn:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+}
+.tab-btn.active {
+    color: #d4af37;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-left: 2px solid #d4af37; 
+}
+.tab-content {
+    width: 100%;
+    padding-left: 30px;
+}
+.tab-panel {
+    display: none; 
+}
+.tab-panel.active-panel {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+}
+.tab-panel h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin-bottom: 5px;
+}
+.tab-panel .company {
+    color: #d4af37;
+}
+.tab-panel .range {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    color: #a8b2d1;
+    margin-bottom: 20px;
+}
+.tab-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tab-panel ul li {
+    position: relative; 
+    padding-left: 25px;
+    margin-bottom: 12px;
+    color: #8892b0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.tab-panel ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-size: 18px;
+}
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+/* ---------------------------------------------------- */
+/* WORK SECTION                                         */
+/* ---------------------------------------------------- */
+#work {
+    padding: 100px 10%;
+}
+.project-card {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 100px;
+    border: none; 
+    background-color: transparent;
+    padding: 0;
+}
+.project-img {
+    flex: 1;
+}
+.project-img img {
+    width: 100%;
+    border-radius: 5px;
+    opacity: 0.8;
+    transition: 0.3s;
+    border: 1px solid #d4af37;
+}
+.project-img:hover img {
+    opacity: 1;
+}
+.project-info {
+    flex: 1;
+}
+.project-overline {
+    color: #d4af37;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.project-title {
+    font-size: 28px;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+}
+.project-desc {
+    background-color: #112240;
+    padding: 20px;
+    border-radius: 5px;
+    color: #a8b2d1;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.project-tech {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #8892b0;
+    margin-bottom: 20px;
+}
+.project-links a {
+    color: #e2e8f0;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.project-links a:hover {
+    color: #d4af37;
+}
+
+/* ---------------------------------------------------- */
+/* CONTACT SECTION                                      */
+/* ---------------------------------------------------- */
+#contact {
+    text-align: center;
+    padding: 100px 20%;
+    margin-bottom: 50px;
+}
+.highlight {
+    color: #d4af37;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+}
+.big-title {
+    font-size: 50px;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+}
+.contact-text {
+    color: #8892b0;
+    line-height: 1.6;
+    margin-bottom: 50px;
+}
+.email-btn {
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    transition: 0.3s;
+}
+.email-btn:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* ---------------------------------------------------- */
+/* FOOTER                                               */
+/* ---------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #8892b0;
+}
+
+/* ---------------------------------------------------- */
+/* MOBILE RESPONSIVENESS                                */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    /* 1. Nav Bar: Shrink padding to save Logo */
+    nav {
+        padding: 20px 5%; 
+    }
+    
+    /* 2. Hero Text: Prevent overflow */
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    /* 3. Stack Experience Section */
+    #experience .inner {
+        display: block; 
+    }
+    
+    /* 4. Turn Sidebar into Top Scrollbar */
+    .tab-list {
+        flex-direction: row; 
+        width: 100%;
+        overflow-x: auto; 
+        border-left: none;
+        border-bottom: 2px solid #233554;
+        margin-bottom: 30px;
+        padding-bottom: 0;
+    }
+
+    /* 5. Adjust Buttons for Touch */
+    .tab-btn {
+        min-width: 120px;
+        text-align: center;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        margin-left: 0;
+    }
+    .tab-btn.active {
+        border-left: none;
+        border-bottom: 2px solid #d4af37; 
+        background-color: transparent;
+    }
+    .tab-content {
+        padding-left: 0;
+    }
+    
+    /* 6. Stack About Section */
+    #about {
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        display: block;
+    }
+    .text {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+    .box-for-image {
+        display: none; /* Hide image on mobile */
+    }
+
+    /* 7. Stack the Work Section */
+    .project-card {
+        flex-direction: column; /* Stacks image on top of text */
+        gap: 20px;
+        padding: 15px;
+    }
+    .project-img, .project-info {
+        width: 100%; 
+    }
+    
+    /* 8. Adjust Contact Width */
+    #contact {
+        padding: 100px 5%; 
+    }
+    .big-title {
+        font-size: 40px; 
+    }
+}
